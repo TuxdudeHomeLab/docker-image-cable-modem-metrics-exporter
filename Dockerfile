@@ -37,7 +37,6 @@ RUN --mount=type=bind,target=/scripts,from=with-scripts,source=/scripts \
         /opt/bin/prometheus_cable_modem_exporter \
         /opt/bin/start-cable-modem-metrics-exporter \
     # Clean up. \
-    && rm -rf /tmp/cable-modem-metrics-exporter \
     && homelab cleanup
 
 # Expose the HTTP server port used by Cable Modem Metrics Exporter.
