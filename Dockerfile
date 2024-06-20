@@ -16,7 +16,7 @@ ARG USER_NAME
 ARG GROUP_NAME
 ARG USER_ID
 ARG GROUP_ID
-ARG CABLE_MODEM_METRICS_EXPORTER_VERSION
+ARG PROMETHEUS_CABLE_MODEM_EXPORTER_VERSION
 
 RUN --mount=type=bind,target=/scripts,from=with-scripts,source=/scripts \
     set -E -e -o pipefail \
@@ -27,7 +27,7 @@ RUN --mount=type=bind,target=/scripts,from=with-scripts,source=/scripts \
         ${GROUP_NAME:?} \
         ${GROUP_ID:?} \
         --create-home-dir \
-    && homelab install-tuxdude-go-package Tuxdude/prometheus_cable_modem_exporter ${CABLE_MODEM_METRICS_EXPORTER_VERSION#v} \
+    && homelab install-tuxdude-go-package Tuxdude/prometheus_cable_modem_exporter ${PROMETHEUS_CABLE_MODEM_EXPORTER_VERSION#v} \
     # Copy the start-cable-modem-metrics-exporter.sh script. \
     && cp /scripts/start-cable-modem-metrics-exporter.sh /opt/prometheus_cable_modem_exporter \
     && ln -sf /opt/prometheus_cable_modem_exporter/start-cable-modem-metrics-exporter.sh /opt/bin/start-cable-modem-metrics-exporter \
