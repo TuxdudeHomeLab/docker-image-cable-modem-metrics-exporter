@@ -46,10 +46,11 @@ test_start_container() {
         --publish 127.0.0.1:8082:8080 \
         ${IMAGE:?} \
         start-cable-modem-metrics-exporter \
+        -demoMode \
         -listenHost 0.0.0.0
 }
 
 test_image_after_container_startup() {
     local container_name="${1:?}"
-    test_http_endpoint "${container_name:?}" http 127.0.0.1 8082 500 metrics
+    test_http_endpoint "${container_name:?}" http 127.0.0.1 8082 200 metrics
 }
